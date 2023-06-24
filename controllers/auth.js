@@ -122,7 +122,7 @@ const logout = (request, response) => {
         secure: true,
         sameSite: 'none',
     })
-    response.status(200).json({ success: true })
+    response.status(200).json({ success: "Logout Successful" })
 }
 
 module.exports = {
