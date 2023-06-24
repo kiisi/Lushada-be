@@ -9,7 +9,7 @@ const signup = async (request, response) => {
 
     try {
 
-        const { name, email, password, confirm_password } = request.body
+        const { name, email, password, confirm_password, gender } = request.body
 
         if (!name || !email || !password || !confirm_password) {
             return response.status(403).json({ error: "Incomplete credentials!" })
@@ -23,13 +23,17 @@ const signup = async (request, response) => {
             return response.status(403).json({ error: "Password does not match!" })
         }
 
+        if (gender !== "male" && gender !== "female"){
+            return response.status(403).json({ error: "Select a gender!" })
+        }
+
         const email_existence = UserModel.findOne({ email: email })
 
         if (!email_existence) {
             return response.status(403).json({ error: "Email already exists!" })
         }
 
-        await UserModel.create({ name, email, password })
+        await UserModel.create({ name, email, password, gender: gender })
 
         return response.status(201).json({ success: "Account created" })
 

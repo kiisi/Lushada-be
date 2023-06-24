@@ -5,22 +5,26 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        trim:true
     },
     email: {
         type: String,
         required: true,
         unique: true,
-        lowercase:true
+        lowercase:true,
+        trim:true
     },
     password: {
         type: String,
-        required: false,
-        default: null
+        required:true
     },
-    verified_email: {
-        type: Boolean,
-        default: false
-    }
+    gender: {
+        type: String,
+        toLowerCase: true,
+        enum: ["male", "female"],
+        trim: true,
+        required:true
+    },
 }, {timestamps: true})
 
 
