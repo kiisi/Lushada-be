@@ -11,7 +11,7 @@ app.set("trust proxy", 1);
 app.use(cookieParser())
 
 const corsOption = {
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173', 'https://lushada.netlify.app'],
     credentials:true,
     optionsSuccessStatus: 200
 }
